@@ -40,15 +40,6 @@ function _delimitCords()
                 cordBTable[i] = b
                 i = i + 1
         end
-        
-        for x in cordATable do
-                print(x)
-        end
-
-        for x in cordBTable do
-                print(x)
-        end
-
 end
 
 function grabCords()
@@ -57,9 +48,20 @@ function grabCords()
         _delimitCords()
 end
 
+function computeDistance()
+	temp = {}
+	for i=1, 3 do
+		temp[i] = (cordATable[i] - cordBTable[i]) * (cordATable[i] - cordBTable[i])
+		print(temp[i])
+	end
+
+	return math.sqrt(math.abs(temp[1] + temp[2] + temp[3]))
+end
 
 function main()
         grabCords()
+	result = computeDistance()
+	print(string.format("%.4f", result))
 end
 
 main()
